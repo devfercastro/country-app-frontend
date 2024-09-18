@@ -10,6 +10,7 @@
     "format": "biome format"
   },
   "dependencies": {
+    "@million/lint": "1.0.0-rc.84",
     "next": "14.2.11",
     "react": "^18",
     "react-dom": "^18"
