@@ -1,35 +1,27 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Fira_Code } from "next/font/google";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const firaCode = Fira_Code({
+	subsets: ["latin"],
+	weight: ["400", "500", "600", "700"],
+	variable: "--fira-code",
 });
 
 export const metadata: Metadata = {
-  title: "Countries App",
-  description: "A simple app to show countries information",
+	title: "Countries Population App",
+	description: "A simple app to show countries population information",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body className={`${firaCode.className} antialiased`}>{children}</body>
+		</html>
+	);
 }

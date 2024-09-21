@@ -6,7 +6,7 @@ export default async function Home() {
 	console.log(availableCountries);
 	return (
 		<main className="flex flex-col items-center justify-center w-screen py-8">
-			<h1 className="text-4xl mb-5">Country App</h1>
+			<h1 className="text-4xl mb-5">Country Population App</h1>
 			<div className="grid grid-cols-5 gap-x-8 gap-y-5">
 				{availableCountries?.map((country) => (
 					<Link
