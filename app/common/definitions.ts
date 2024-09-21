@@ -15,7 +15,7 @@ type bordersItem = {
   iso2: "string";
 }
 
-type populationItem = {
+export type populationItem = {
   year: number;
   value: number;
 }
