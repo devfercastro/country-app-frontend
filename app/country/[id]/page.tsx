@@ -1,7 +1,11 @@
 import { getCountryInfo } from "@/app/services/countryService";
+
 import Link from "next/link";
+import CountryLink from "@/app/components/country-link";
 import Image from "next/image";
+
 import PopulationChart from "@/app/components/population-chart";
+
 import { HomeIcon } from "@heroicons/react/24/solid";
 
 export default async function CountryPage({
@@ -37,13 +41,7 @@ export default async function CountryPage({
 						<h2 className="text-2xl mb-2 font-semibold">Border countries:</h2>
 						<div className="flex flex-col gap-y-2 overflow-y-auto max-h-56">
 							{countryInfo?.borders.map((border) => (
-								<Link
-									href={`/country/${border.iso2}${border.name}`}
-									key={border.iso2}
-									className="bg-slate-900 rounded-lg p-2 text-center hover:bg-slate-50 hover:text-black duration-300 ease-in-out transition-colors"
-								>
-									{border.name}
-								</Link>
+								<CountryLink name={border.name} code={border.iso2} key={border.iso2} />
 							))}
 						</div>
 					</div>
