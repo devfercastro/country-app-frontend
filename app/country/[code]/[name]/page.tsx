@@ -10,9 +10,8 @@ import { HomeIcon } from "@heroicons/react/24/solid";
 
 export default async function CountryPage({
 	params,
-}: { params: { id: string } }) {
-	const code = params.id.slice(0, 2);
-	const name = params.id.slice(2);
+}: { params: { code: string; name: string } }) {
+	const { code, name } = params;
 	const countryInfo = await getCountryInfo(name, code);
 
 	return (
@@ -41,7 +40,11 @@ export default async function CountryPage({
 						<h2 className="text-2xl mb-2 font-semibold">Border countries:</h2>
 						<div className="flex flex-col gap-y-2 overflow-y-auto max-h-56">
 							{countryInfo?.borders.map((border) => (
-								<CountryLink name={border.name} code={border.iso2} key={border.iso2} />
+								<CountryLink
+									name={border.name}
+									code={border.iso2}
+									key={border.iso2}
+								/>
 							))}
 						</div>
 					</div>
