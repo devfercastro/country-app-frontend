@@ -39,6 +39,3 @@ next-env.d.ts
 .vscode/
 .idx/
 *.code-profile
-
-# Million Lint
-.million
