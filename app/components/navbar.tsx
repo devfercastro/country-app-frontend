@@ -26,8 +26,8 @@ export default function Navbar({
 	};
 
 	return (
-		<nav className="flex flex-row justify-center items-center w-full">
-			<div className="flex flex-row gap-x-4">
+		<nav className="fixed top-0 right-0 h-screen max-w-20 bg-slate-900 w-24">
+			<div className="flex flex-col justify-between py-2 items-center h-full">
 				{groups &&
 					Object.keys(groups).map((initial) => {
 						const group = groups[initial];
@@ -36,7 +36,7 @@ export default function Navbar({
 								type="button"
 								key={group.groupId}
 								onClick={() => scrollToGroup(group.groupId)}
-								className="bg-slate-900 rounded-lg p-4 font-semibold text-center hover:bg-slate-50 hover:text-black"
+								className="font-semibold text-center hover:decoration-2 hover:underline hover:text-2xl"
 							>
 								{initial.toUpperCase()}
 							</button>
