@@ -1,29 +1,15 @@
 import type { APICountriesList } from "../common/definitions";
 import CountryLink from "./country-link";
 
-const groupCountriesByInitial = (countries: APICountriesList) => {
-	return countries.reduce(
-		(acc, country) => {
-			const initial = country.name.charAt(0).toUpperCase();
-			if (!acc[initial]) {
-				acc[initial] = [];
-			}
-			acc[initial].push(country);
-			return acc;
-		},
-		{} as Record<string, APICountriesList>,
-	);
-};
-
 export default function CountryList({
-	countries,
-}: { countries: APICountriesList | undefined }) {
-	const groupedCountries = groupCountriesByInitial(countries || []);
-
+	groups,
+}: {
+	groups: Record<string, { groupId: string; countriesList: APICountriesList }>;
+}) {
 	return (
 		<div className="flex flex-col gap-y-12">
-			{groupedCountries &&
-				Object.keys(groupedCountries).map((initial) => (
+			{groups &&
+				Object.keys(groups).map((initial) => (
 					<div
 						className="flex flex-col"
 						id={`group${initial}`}
@@ -33,7 +19,7 @@ export default function CountryList({
 							{initial.toUpperCase()}
 						</p>
 						<div className="grid grid-cols-4 gap-4">
-							{groupedCountries[initial].map((country) => (
+							{groups[initial].countriesList.map((country) => (
 								<CountryLink
 									key={country.countryCode}
 									name={country.name}
