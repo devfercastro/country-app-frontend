@@ -31,7 +31,7 @@ export default async function Home() {
 	const groupedCountries = groupCountriesByInitial(availableCountries || []);
 
 	return (
-		<main className="flex flex-col items-center justify-center w-screen pt-[180px]">
+		<main className="flex flex-col items-center justify-center w-screen pt-[180px] pb-12">
 			<header className="flex flex-col items-center justify-center w-full py-4 fixed top-0 left-0 bg-black">
 				<h1 className="text-4xl font-bold mb-5">Country Population App</h1>
 				<Navbar groups={groupedCountries} />
