@@ -7,17 +7,15 @@ export default function Navbar({
 }: {
 	groups: Record<string, { groupId: string; countriesList: APICountriesList }>;
 }) {
-	const HEADER_HEIGHT = 180;
+	const offset = 100;
 
 	const scrollToGroup = (groupId: string) => {
 		const element = document.getElementById(groupId);
 		if (element) {
-			// Calculate the top position of the element, adjusting for the header height
 			const elementPosition =
 				element.getBoundingClientRect().top + window.scrollY;
-			const offsetPosition = elementPosition - HEADER_HEIGHT;
+			const offsetPosition = elementPosition - offset;
 
-			// Scroll to the position with smooth behavior
 			window.scrollTo({
 				top: offsetPosition,
 				behavior: "smooth",
