@@ -8,7 +8,7 @@ export async function getAvaillableCountries() {
 		const response = await axios.get<APICountriesList>(`${api}/`);
 		return response.data;
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 	}
 }
 
@@ -24,9 +24,9 @@ export async function getCountryInfo(name: string, iso2: string) {
 			country: name,
 			iso2,
 		});
-		if(response.status === 200) Object.assign(ouput, response.data);
+		if (response.status === 200) Object.assign(ouput, response.data);
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 	}
 
 	return ouput;

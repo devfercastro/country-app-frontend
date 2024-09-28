@@ -7,6 +7,11 @@ import Image from "next/image";
 import PopulationChart from "@/app/components/population-chart";
 
 import { HomeIcon } from "@heroicons/react/24/solid";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Country Info",
+};
 
 export default async function CountryPage({
 	params,
