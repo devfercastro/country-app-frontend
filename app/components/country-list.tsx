@@ -70,7 +70,7 @@ export default function CountryList({
 					</div>
 				))}
 			{query !== "" && (
-				<div className="grid grid-cols-4 gap-4 w-full">
+				<div className="grid grid-cols-2 gap-2 pt-4 md:grid-cols-4 md:gap-4">
 					{searchedCountries.map((country) => (
 						<CountryLink
 							key={country.countryCode}
