@@ -7,7 +7,7 @@ export default function CountryLink({
 	return (
 		<Link
 			href={`/country/${code}/${name}`}
-			className="bg-slate-900 rounded-lg p-4 text-center font-semibold hover:bg-slate-50 hover:text-black"
+			className="bg-slate-900 rounded-lg p-2 text-center font-semibold hover:bg-slate-50 hover:text-black md:p-4"
 		>
 			{name}
 		</Link>

@@ -58,7 +58,7 @@ export default function CountryList({
 						<p className="pl-12 font-bold mb-4 border-b-2">
 							{initial.toUpperCase()}
 						</p>
-						<div className="grid grid-cols-4 gap-4">
+						<div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4">
 							{groups[initial].countriesList.map((country) => (
 								<CountryLink
 									key={country.countryCode}
