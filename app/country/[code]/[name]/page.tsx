@@ -1,16 +1,33 @@
-import { getCountryInfo } from "@/app/services/countryService";
-
 import Link from "next/link";
-import CountryLink from "@/app/components/country-link";
 import Image from "next/image";
-
-import PopulationChart from "@/app/components/population-chart";
+import type { Metadata } from "next";
 
 import { HomeIcon } from "@heroicons/react/24/solid";
-import type { Metadata } from "next";
+
+import { getCountryInfo } from "@/app/services/countryService";
+import CountryLink from "@/app/components/country-link";
+import PopulationChart from "@/app/components/population-chart";
 
 export const metadata: Metadata = {
 	title: "Country Info",
+};
+
+// TODO: Pass tailwind classes as props
+const CountryFlag = ({
+	url,
+	width,
+	height,
+	classes,
+}: { url: string; width: number; height?: number; classes?: string }) => {
+	return (
+		<Image
+			src={url}
+			alt="flag"
+			width={width}
+			height={height ? height : width - width * 0.3}
+			className={`rounded-sm ${classes}`}
+		/>
+	);
 };
 
 export default async function CountryPage({
@@ -20,7 +37,7 @@ export default async function CountryPage({
 	const countryInfo = await getCountryInfo(name, code);
 
 	return (
-		<main className="flex flex-col w-screen h-screen py-8 px-8">
+		<main className="flex flex-col w-screen h-screen py-8 px-8 md:h-min">
 			<header className="flex flex-row items-center gap-x-8 mb-8">
 				<Link
 					href="/"
@@ -29,35 +46,24 @@ export default async function CountryPage({
 				>
 					<HomeIcon height={24} width={24} />
 				</Link>
-				<h1 className="text-4xl font-bold">{countryInfo?.name}</h1>
+				<h1 className="font-bold text-2xl md:text-4xl">{countryInfo?.name}</h1>
+				<CountryFlag url={countryInfo?.flag} width={50} />
 			</header>
-			<div className="flex flex-row justify-between w-full h-full overflow-hidden px-5 bg-gray-800 rounded-xl border-2 border-slate-500 pt-5">
-				<div className="flex flex-col">
-					<h2 className="text-2xl mb-2 font-semibold">Flag:</h2>
-					<Image
-						src={countryInfo?.flag ? countryInfo?.flag : "/images/default.png"}
-						alt="flag"
-						width={200}
-						height={200}
-						className="rounded-lg"
-					/>
-					<div className="flex flex-col mt-5">
-						<h2 className="text-2xl mb-2 font-semibold">Border countries:</h2>
-						<div className="flex flex-col gap-y-2 overflow-y-auto max-h-56">
-							{countryInfo?.borders.map((border) => (
-								<CountryLink
-									name={border.name}
-									code={border.iso2}
-									key={border.iso2}
-								/>
-							))}
-						</div>
-					</div>
-				</div>
-
-				<div className="flex flex-col w-min h-full ml-8">
+			<div className="w-full flex flex-col justify-center items-center px-5 pt-5 md:flex-row">
+				<div className="w-full flex flex-col">
 					<h2 className="text-2xl mb-2 font-semibold">Population data:</h2>
 					<PopulationChart data={countryInfo.population} />
+
+					<h2 className="text-2xl mb-2 font-semibold">Border countries:</h2>
+					<div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4">
+						{countryInfo?.borders.map((border) => (
+							<CountryLink
+								name={border.name}
+								code={border.iso2}
+								key={border.iso2}
+							/>
+						))}
+					</div>
 				</div>
 			</div>
 		</main>

@@ -34,7 +34,7 @@ export default function Navbar({
 								type="button"
 								key={group.groupId}
 								onClick={() => scrollToGroup(group.groupId)}
-								className="font-semibold text-center w-full h-full hover:decoration-2 hover:underline hover:text-2xl active:bg-black"
+								className="font-semibold text-center rounded-md w-full h-full hover:decoration-2 hover:underline hover:text-2xl active:bg-black"
 							>
 								{initial.toUpperCase()}
 							</button>

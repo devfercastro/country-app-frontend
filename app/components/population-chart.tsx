@@ -37,13 +37,13 @@ export default function PopulationChart({ data }: { data: populationItem[] }) {
 	};
 
 	return (
-		<div className="flex flex-col w-min h-min">
-			<div className="flex flex-row w-min h-min border-l-2 border-b-2 p-2 relative">
+		<div className="flex flex-col w-full h-min">
+			<div className="flex flex-row w-full h-min border-l-2 border-b-2 pr-2 relative">
 				{[...data].reverse().map((item) => (
 					<div
 						key={item.year}
 						id={`${item.year}`}
-						className="relative h-[350px] w-4 group"
+						className="relative h-[350px] w-full group"
 						onMouseEnter={handleMouseEnter}
 						onMouseLeave={handleMouseLeave}
 						onMouseMove={handleMouseMove}
@@ -62,8 +62,8 @@ export default function PopulationChart({ data }: { data: populationItem[] }) {
 						)}
 
 						<p
-							className="font-extrabold text-xl absolute left-0 cursor-default text-center"
-							style={{ bottom: `${((item.value - min) / (max - min)) * 90}%` }}
+							className="font-extrabold text-xl absolute left-0 cursor-default text-center select-none"
+							style={{ bottom: `${((item.value - min) / (max - min)) * 95}%` }}
 						>
 							.
 						</p>
